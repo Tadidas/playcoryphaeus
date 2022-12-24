@@ -5,5 +5,14 @@
 </head>
 <body>
   <h1>Welcome to My Website</h1>
+FB.ui(
+  {
+    method: 'pay',
+    action: 'purchaseiap',
+    product_id: 1000gems,
+    developer_payload: 'this_is_a_test_payload'
+  },
+  response => (console.log(response)) // Callback function
+);
 </body>
 </html>
