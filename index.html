@@ -7,20 +7,18 @@
   <h1>Welcome to My Website</h1>
   <button id="pay-button" class="button">Pay with Facebook !</button>
   <script>
-    document.getElementById('pay-button').addEventListener('click', function() {
-      FB.ui({
-        method: 'pay',
-        action: 'purchaseitem',
-        product: '1000gems',
-        quantity: 1
-      }, function(response) {
-        if (response && !response.error_message) {
-          // payment was successful
-        } else {
-          // payment failed or was cancelled
-        }
-      });
-    });
+  let buttonAlert = document.getElementById("pay-button");
+  buttonAlert.onclick = function(){
+     FB.ui(
+  {
+    method: 'pay',
+    action: 'purchaseiap',
+    product_id: '1000gems',
+    developer_payload: 'this_is_a_test_payload'
+  },
+  response => (console.log(response)) // Callback function
+);
+};
   </script>
 </body>
 </html>
