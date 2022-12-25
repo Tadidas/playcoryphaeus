@@ -1,0 +1,40 @@
+<html>
+<head>
+  <title>My Website</title>
+</head>
+<body>
+  <h1>Welcome to My Website</h1>
+  <button id="pay-button" class="button">Pay with Facebook !</button>
+  <script>
+ window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1612379619218739',
+      xfbml      : true,
+      version    : 'v15.0'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+  let buttonAlert = document.getElementById("pay-button");
+  buttonAlert.onclick = function(){
+     FB.ui(
+  {
+    method: 'pay',
+    action: 'purchaseiap',
+    product_id: '1000gems'
+  },
+  response => (console.log(response)) // Callback function
+);
+};
+  </script>
+</body>
+</html>
+
