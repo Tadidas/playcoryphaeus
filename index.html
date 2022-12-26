@@ -1,0 +1,51 @@
+<html>
+<head>
+  <title>Coryphaeus Championships</title>
+<style>
+</style>
+</head>
+<body>
+  <h1></h1>
+  <script>
+ window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1612379619218739',
+      xfbml      : true,
+      version    : 'v15.0'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+function handlePaymentResponse(response) {
+  if (response.error_code) {
+    // Payment failed
+    console.error(`Payment failed: ${response.error_message}`);
+  } else if (response.payment_id) {
+    // Payment succeeded
+    console.log(`Payment succeeded: ${response.payment_id}`);
+  } else {
+    // Payment was cancelled by the user
+    console.log('Payment cancelled');
+  }
+};
+
+  window.onload = function(){
+     FB.ui({
+    method: 'pay',
+    action: 'purchaseitem',
+    product: "https://458c0.playfabapi.com/OpenGraphProduct/458c0/1/Shop/newgems1000"
+  },
+  handlePaymentResponse
+);
+};
+  </script>
+</body>
+</html>
