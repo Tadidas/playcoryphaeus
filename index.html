@@ -36,6 +36,16 @@ function handlePaymentResponse(response) {
   }
 };
 
+  window.onload = function(){
+     FB.ui({
+    method: 'pay',
+    action: 'purchaseitem',
+    product: "https://458c0.playfabapi.com/OpenGraphProduct/458c0/1/Shop/newgems1000"
+  },
+  handlePaymentResponse
+);
+};
+
   let buttonAlert = document.getElementById("pay-button");
   buttonAlert.onclick = function(){
      FB.ui({
