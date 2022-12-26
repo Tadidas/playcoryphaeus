@@ -38,11 +38,10 @@ function handlePaymentResponse(response) {
 
   let buttonAlert = document.getElementById("pay-button");
   buttonAlert.onclick = function(){
-     FB.ui(
-  {
+     FB.ui({
     method: 'pay',
-    action: 'purchaseiap',
-    product_id: 'https://458c0.playfabapi.com/OpenGraphProduct/458c0/1/Shop/lol'
+    action: 'purchaseitem',
+    product: "https://458c0.playfabapi.com/OpenGraphProduct/458c0/1/Shop/newgems1000"
   },
   handlePaymentResponse
 );
