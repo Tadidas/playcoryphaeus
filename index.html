@@ -15,6 +15,19 @@
     FB.AppEvents.logPageView();
   };
 
+function handlePaymentResponse(response) {
+  if (response.error_code) {
+    // Payment failed
+    console.error(`Payment failed: ${response.error_message}`);
+  } else if (response.payment_id) {
+    // Payment succeeded
+    console.log(`Payment succeeded: ${response.payment_id}`);
+  } else {
+    // Payment was cancelled by the user
+    console.log('Payment cancelled');
+  }
+};
+
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
@@ -31,7 +44,7 @@
     action: 'purchaseiap',
     product_id: "https://458c0.playfabapi.com/OpenGraphProduct/458c0/1/Shop/newgems1000"
   },
-  response => (console.log(response)) // Callback function
+  handlePaymentResponse
 );
 };
   </script>
