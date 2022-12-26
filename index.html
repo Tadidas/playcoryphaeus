@@ -15,6 +15,14 @@
     FB.AppEvents.logPageView();
   };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
 function handlePaymentResponse(response) {
   if (response.error_code) {
     // Payment failed
@@ -28,22 +36,13 @@ function handlePaymentResponse(response) {
   }
 };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
   let buttonAlert = document.getElementById("pay-button");
   buttonAlert.onclick = function(){
      FB.ui(
   {
     method: 'pay',
     action: 'purchaseiap',
-    product_id: "https://458c0.playfabapi.com/OpenGraphProduct/458c0/1/Shop/newgems1000",
-    access_token: "EAAW6c2JyVTMBAK19gkf2U0gDRgvzXvXqpecv4PpnZBidLcrCDWmQP6Lk3cZCwP1WQS6qtJbypAMBjUwFehlu5qP2iLVEMItbIOQw3CJsdebZBZBY7QR5XpUVDugcMDZBOoT8tpcUcpt6QgGJQa2vg38UbGSuDsJ3IUrwaLj1c6yMc3WrhntNdKrdAx6E5CNZBDSY7EQNiwTAZDZD"
+    product_id: 'https://458c0.playfabapi.com/OpenGraphProduct/458c0/1/Shop/newgems1000',
   },
   handlePaymentResponse
 );
