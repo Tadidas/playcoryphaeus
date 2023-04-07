@@ -42,7 +42,7 @@ function handlePaymentResponse(response) {
      FB.ui({
     method: 'pay',
     action: 'purchaseitem',
-    product: "https://458c0.playfabapi.com/OpenGraphProduct/458c0/1/Shop/newgems1000"
+    product: "https://<PLAYFAB_ProjectID>.playfabapi.com/OpenGraphProduct/<PLAYFAB_ProjectID>/1/Shop/newgems1000"
   },
   handlePaymentResponse
 );
